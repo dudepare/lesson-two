@@ -2,16 +2,21 @@ from django.db import models
 
 from django.utils import timezone
 
+# Create your models here.
+class Client(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return '{}'.format(self.name)
 
 class Project(models.Model):
-    client = models.CharField(max_length=200)
+    client = models.ForeignKey('Client')
     name = models.CharField(max_length=200)
 
     def __str__(self):
         return '<{}> {}'.format(self.client, self.name)
 
 
-# Create your models here.
 class Entry(models.Model):
     start = models.DateTimeField(default=timezone.now)
     stop = models.DateTimeField(blank=True, null=True)
