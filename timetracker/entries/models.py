@@ -28,3 +28,6 @@ class Entry(models.Model):
 
     def is_finished(self):
         return self.stop is not None
+
+    class Meta:
+        verbose_name_plural = "Entries"
